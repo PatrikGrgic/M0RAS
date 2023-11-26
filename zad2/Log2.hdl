@@ -1,0 +1,36 @@
+CHIP Log2
+{
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    Not16(in = in, out = ni);
+    Add16(a = in, b = ni, out = dif);   
+    Inc16(in = dif, out = counter);
+	
+
+  
+    Inc16(in = counter, out = counter1);
+    Inc16(in = counter1, out = counter2);
+    Inc16(in = counter2, out = counter3);
+    Inc16(in = counter3, out = counter4);
+    Inc16(in = counter4, out = counter5);
+    Inc16(in = counter5, out = counter6);
+    Inc16(in = counter6, out = counter7);
+    Inc16(in = counter7, out = counter8);
+    Inc16(in = counter8, out = counter9);
+    Inc16(in = counter9, out = counter10);
+    Inc16(in = counter10, out = counter11);
+    Inc16(in = counter11, out = counter12);
+    Inc16(in = counter12, out = counter13);
+    Inc16(in = counter13, out = counter14);
+    Inc16(in = counter14, out = counter15);
+    Inc16(in = counter15, out = counter16);
+
+    
+	Clz(in = in,  out = out1);
+    Not16(in =  out1, out = n);
+    Add16(a =  counter16, b = n, out = dif1);
+    Neg(a = in, out = ngin);
+    Mux16(a = dif1, b = dif, sel = ngin, out = out);
+}
